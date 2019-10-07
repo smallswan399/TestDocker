@@ -6,7 +6,9 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/core/sdk:3.0-buster AS build
 WORKDIR /
 RUN pwd
+RUN cd /var/lib/docker/tmp
 RUN ls -l
+WORKDIR /
 COPY ["TestDocker/TestDocker.csproj", "TestDocker/"]
 RUN dotnet restore "TestDocker/TestDocker.csproj"
 COPY . .
